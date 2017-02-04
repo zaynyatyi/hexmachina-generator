@@ -1,0 +1,61 @@
+{
+    "name": "hexmachina-generator",
+    "displayName": "hexMachina Generator",
+    "description": "Generator for basic hexMachina files",
+    "version": "0.0.3",
+    "publisher": "zaynyatyi",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.generateModel"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "configuration": {
+            "title": "hexMachina Generator Extension Configuration",
+            "type": "object",
+            "properties": {
+                "hexMachinaGenerator.showFullPath": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Shows the full path as an initial value in the text box for the path."
+                },
+                "hexMachinaGenerator.relativeTo": {
+                    "type": "string",
+                    "default": "file",
+                    "description": "Whether the entered path should be treated relative to the existing 'project', the currently selected 'file' or specified 'root'. If set to 'root' you need to set the 'rootDirectory' setting."
+                },
+                "hexMachinaGenerator.rootDirectory": {
+                    "type": "string",
+                    "default": "~",
+                    "description": "Only used when 'relativeTo' is set to 'root'. Used as the root for creating new files."
+                }
+            }
+        },
+        "commands": [{
+            "command": "extension.generateModel",
+            "title": "Generate hexMachina model bucket"
+        }]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    },
+    "dependencies": {
+        "mkdirp": "^0.5.1",
+        "q": "^1.4.1"
+    }
+}
